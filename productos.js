@@ -1,12 +1,13 @@
 let costoEnvio = 500
 function menuPrincipal() {
     
-    let menu
+let menu
 
-    alert("Bienvenido a Kioskito Peluquero");
+alert("Bienvenido a Kioskito Peluquero");
+
 
     do {
-        menu = prompt("1-Deseo realizar una Compra \n 2- Deseo salir")
+        menu = prompt("Marquee \n 1 Si desea realizar una Compra \n 2 Si desea salir")
         menu = parseInt(menu)
         switch (menu) {
             case 1:
@@ -14,7 +15,7 @@ function menuPrincipal() {
                 break
 
             case 2:
-                alert("Nos Vemos!")
+                alert("Vuelva Pronto!")
                 break
             default:
                 alert("opcion invalida")
@@ -28,15 +29,12 @@ function comprarProductos() {
     let acondicionador = 2000
     let planchita = 3500
     let lima = 500
-    let tijera = 1200
-    
+    let tijera = 1200    
 
-    let producto = prompt("Para comprar algunos de nuetros producto\nElija la opcion que desee..\n 1-Shampoo\n 2-Acondicionador\n 3-Planchita\n 4-Lima\n 5-Tijera\n (presione aceptar para seguir comprando o ingrese 'fin' para salir)")
-1
+    let producto = prompt("Para comprar algunos de nuetros producto\nElija la opcion que desee..\n 1-Shampoo\n 2-Acondicionador\n 3-Planchita\n 4-Lima\n 5-Tijera\n 0- Para Finalizar la compra")
     producto = parseInt(producto)
 
-while (producto != "fin") {
-
+while (producto != "0") {
     switch (producto) {
         case 1:
             totalCompra = totalCompra + shampoo;
@@ -58,16 +56,13 @@ while (producto != "fin") {
             totalCompra = totalCompra + tijera;
             alert("El precio del Tijera es $" + tijera + ", el total de su compra es: " + totalCompra)
             break
-
         default:
             alert("opción inválida")
             break        
-    }
-    
-
-    producto = prompt("Si usted desea seguir a comprando..\n Vuelva a elegir otra opc!\n 1-Shampoo \n 2-Acondicionador \n 3-Planchita \n 4-Lima \n 5-Tijera \n(presione aceptar para seguir comprando o ingrese 'fin' para terminar la compra)")
+    } 
+    producto = prompt("Si usted desea seguir a comprando..\n Vuelva a elegir otra opc!\n 1-Shampoo \n 2-Acondicionador \n 3-Planchita \n 4-Lima \n 5-Tijera \n 0-para Finalizar la compra")
+    producto = parseInt (producto)
 }
-
 if (envios() == false) {
     totalCompra = totalCompra + costoEnvio;
 }
@@ -76,15 +71,16 @@ function envios() {
         alert("Al ser una compra mayor o igual que $3000,El envio es gratuito")
         return true
     }
-    
+    else if (totalCompra==0){
+        alert("¡Gracias por elegirnos!")
+        return false
+    }
     else {
         alert("Al ser una compra menor a 3000, se incluye el costo de envio ")
         return false
     }
 }
-
 alert("El total de su compra es " + totalCompra)
-
 
 return totalCompra    
 }
